@@ -3,18 +3,15 @@ import { Button, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import IniciComponent from "./components/IniciComponent.js";
 import React from "react";
 
-import { homeStyle } from "./style.js";
+import { iniciStyle } from "./style.js";
 
-function HomeScreen({ navigation }) {
+function Inici({ navigation }) {
   return (
     <View>
-      <Text>Home Screen</Text>
-      <Button
-        title="Anar a detalls"
-        onPress={() => navigation.navigate("Details")}
-      />
+      <IniciComponent></IniciComponent>
     </View>
   );
 }
@@ -32,8 +29,8 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="Inici">
+        <Stack.Screen name="Inici" component={Inici} />
         <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>

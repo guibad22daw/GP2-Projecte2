@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-const home = StyleSheet.create({
+const iniciStyle = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
@@ -9,4 +9,4 @@ const home = StyleSheet.create({
     },
   });
 
-export {homeStyle};
+export {iniciStyle};

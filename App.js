@@ -6,8 +6,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import IniciComponent from "./components/IniciComponent.js";
 import React from "react";
 
-import { iniciStyle } from "./style.js";
-
 function Inici({ navigation }) {
   return (
     <View>

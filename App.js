@@ -11,7 +11,7 @@ import { iniciStyle } from "./style.js";
 function Inici({ navigation }) {
   return (
     <View>
-      <IniciComponent></IniciComponent>
+      <IniciComponent navigation={navigation}></IniciComponent>
     </View>
   );
 }

@@ -1,7 +1,6 @@
 import { Button, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
 
-export default function IniciComponent() {
+export default function IniciComponent({ navigation }) {
   return (
     <>
       <Text>Home Screen</Text>

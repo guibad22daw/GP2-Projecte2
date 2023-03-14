@@ -1,36 +1,36 @@
-import { StatusBar } from "expo-status-bar";
-import { Button, Text, View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import * as React from 'react';
+import { Button, View } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
 
-import IniciComponent from "./components/IniciComponent.js";
-import React from "react";
-
-function Inici({ navigation }) {
+function HomeScreen({ navigation }) {
   return (
-    <View>
-      <IniciComponent navigation={navigation}></IniciComponent>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
     </View>
   );
 }
 
-function DetailsScreen() {
+function NotificationsScreen({ navigation }) {
   return (
-    <View>
-      <Text>Details Screen</Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
     </View>
   );
 }
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Inici">
-        <Stack.Screen name="Inici" component={Inici} />
-        <Stack.Screen name="Details" component={DetailsScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator useLegacyImplementation initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

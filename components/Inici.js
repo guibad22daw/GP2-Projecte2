@@ -1,11 +1,12 @@
 import { Button, View } from 'react-native';
+import estils from './Styles';
 
 export function Inici({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={estils.contenidor}>
       <Button
         onPress={() => navigation.navigate('Dades')}
-        title="Go to Dades"
+        title="Veure dades"
       />
     </View>
   );

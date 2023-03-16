@@ -3,6 +3,10 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     container: {
         padding: 20,
+        flex: 1, 
+        justifyContent: 'center',
+        marginTop: -80,
+        fontFamily:'Poppins'
     },
     label: {
         marginBottom: 5,
@@ -19,6 +23,12 @@ const styles = StyleSheet.create({
     missatgeInput: {
         height: 80,
     },
+    titol: {
+        fontSize: 25,
+        textAlign: 'center',
+        marginTop: 80,
+        fontFamily:'PoppinsSemibold'
+    }
 });
 
 export default styles;

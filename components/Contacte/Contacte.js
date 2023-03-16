@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import styles from './Styles';
+import { useFonts } from 'expo-font';
 
 export function Contacte ({ navigation }) {
   const [nom, setNom] = useState('');
@@ -15,8 +16,20 @@ export function Contacte ({ navigation }) {
     console.log('Missatge:', misstage);
   };
 
+  const [loaded] = useFonts({
+    Poppins: require('../../assets/fonts/Poppins-Regular.ttf'),
+    PoppinsMedium: require('../../assets/fonts/Poppins-Medium.ttf'),
+    PoppinsSemibold: require('../../assets/fonts/Poppins-SemiBold.ttf'),
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
+    <Fragment>
+      <Text style={styles.titol}>Formulari de contacte</Text>
+      <View style={styles.container}>
       <Text style={styles.label}>Nom:</Text>
       <TextInput
         style={styles.input}
@@ -48,5 +61,6 @@ export function Contacte ({ navigation }) {
       />
       <Button title="Enviar" onPress={handleSubmit} />
     </View>
+    </Fragment>
   );
 };

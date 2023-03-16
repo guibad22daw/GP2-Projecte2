@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Button, View,Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { Inici } from './components/Inici';
-import { Contacte } from './components/Contacte';
-import { Dades } from './components/Dades';
+import { Inici } from './components/Inici/Inici';
+import { Contacte } from './components/Contacte/Contacte';
+import { Dades } from './components/Dades/Dades';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Drawer = createDrawerNavigator();

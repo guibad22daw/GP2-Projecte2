@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, ImageBackground, StyleSheet } from 'react-native';
 import styles from './Styles';
 import { useFonts } from 'expo-font';
 
@@ -11,9 +11,13 @@ export function Contacte ({ navigation }) {
 
   const handleSubmit = () => {
     console.log('Nom:', nom);
+    setNom('');
     console.log('Cognoms:', cognom);
+    setCognom('');
     console.log('Email:', email);
+    setEmail('');
     console.log('Missatge:', misstage);
+    setMissatge('');
   };
 
   const [loaded] = useFonts({
@@ -27,40 +31,43 @@ export function Contacte ({ navigation }) {
   }
 
   return (
-    <Fragment>
-      <Text style={styles.titol}>Formulari de contacte</Text>
+    <ImageBackground
+      source={{uri: 'https://images.pexels.com/photos/1156684/pexels-photo-1156684.jpeg?cs=srgb&dl=pexels-arun-thomas-1156684.jpg&fm=jpg'}}
+      style={styles.backgroundImage}>
       <View style={styles.container}>
-      <Text style={styles.label}>Nom:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Introdueix el teu nom"
-        value={nom}
-        onChangeText={setNom}
-      />
-      <Text style={styles.label}>Cognoms:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Introdueix el teu cognom"
-        value={cognom}
-        onChangeText={setCognom}
-      />
-      <Text style={styles.label}>Email:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Introdueix el teu email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <Text style={styles.label}>Missatge:</Text>
-      <TextInput
-        style={[styles.input, styles.missatgeInput]}
-        placeholder="Introdueix un missatge"
-        value={misstage}
-        onChangeText={setMissatge}
-        multiline
-      />
-      <Button title="Enviar" onPress={handleSubmit} />
-    </View>
-    </Fragment>
+        <Text style={styles.titol}>Formulari de contacte</Text>
+        <Text style={styles.description}>Necessites ajuda o tens alguna consulta en la qual puguem ajudar-te? Estem a la teva disposició.</Text>
+        <Text style={styles.label}>Nom:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Introdueix el teu nom"
+          value={nom}
+          onChangeText={setNom}
+        />
+        <Text style={styles.label}>Cognoms:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Introdueix el teu cognom"
+          value={cognom}
+          onChangeText={setCognom}
+        />
+        <Text style={styles.label}>Email:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Introdueix el teu email"
+          value={email}
+          onChangeText={setEmail}
+        />
+        <Text style={styles.label}>Missatge:</Text>
+        <TextInput
+          style={[styles.input, styles.missatgeInput]}
+          placeholder="Introdueix un missatge"
+          value={misstage}
+          onChangeText={setMissatge}
+          multiline
+        />
+        <Button title="Enviar" onPress={handleSubmit} />
+      </View>
+    </ImageBackground>
   );
 };

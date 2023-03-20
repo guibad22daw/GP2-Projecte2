@@ -1,9 +1,10 @@
 import React, { useState, Fragment } from 'react';
-import { View, Text, TextInput, Button, ImageBackground, StyleSheet } from 'react-native';
+import { View, Text, TextInput, ImageBackground, StyleSheet } from 'react-native';
+import Button from '../Button';
 import styles from './Styles';
 import { useFonts } from 'expo-font';
 
-export function Contacte ({ navigation }) {
+export function Contacte({ navigation }) {
   const [nom, setNom] = useState('');
   const [cognom, setCognom] = useState('');
   const [email, setEmail] = useState('');
@@ -32,7 +33,7 @@ export function Contacte ({ navigation }) {
 
   return (
     <ImageBackground
-      source={{uri: 'https://images.pexels.com/photos/1156684/pexels-photo-1156684.jpeg?cs=srgb&dl=pexels-arun-thomas-1156684.jpg&fm=jpg'}}
+      source={{ uri: 'https://images.pexels.com/photos/1156684/pexels-photo-1156684.jpeg?cs=srgb&dl=pexels-arun-thomas-1156684.jpg&fm=jpg' }}
       style={styles.backgroundImage}>
       <View style={styles.container}>
         <Text style={styles.titol}>Formulari de contacte</Text>
@@ -66,7 +67,9 @@ export function Contacte ({ navigation }) {
           onChangeText={setMissatge}
           multiline
         />
-        <Button title="Enviar" onPress={handleSubmit} />
+        <Button title="Click" buttonCustomStyles={{ backgroundColor: "#2196f3", borderRadius: 50, marginTop: 10 }} textCustomStyles={{ color: "white" }}
+          onPress={handleSubmit}
+        />
       </View>
     </ImageBackground>
   );

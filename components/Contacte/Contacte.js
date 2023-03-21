@@ -67,7 +67,7 @@ export function Contacte({ navigation }) {
           onChangeText={setMissatge}
           multiline
         />
-        <Button title="Click" buttonCustomStyles={{ backgroundColor: "#2196f3", borderRadius: 50, marginTop: 10 }} textCustomStyles={{ color: "white" }}
+        <Button text="Enviar" buttonCustomStyles={{ backgroundColor: "#2196f3", borderRadius: 50, marginTop: 10 }} textCustomStyles={{ color: "white" }}
           onPress={handleSubmit}
         />
       </View>

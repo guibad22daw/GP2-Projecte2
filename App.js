@@ -4,8 +4,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { Inici } from './components/Inici/Inici';
 import { Contacte } from './components/Contacte/Contacte';
-import { Dades } from './components/Dades/Dades';
+import Dades from './components/Dades/Dades';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Grafic from './components/Grafic/Grafic';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
       <Drawer.Navigator useLegacyImplementation initialRouteName="Inici">
         <Drawer.Screen name="Inici" component={Inici} options={{drawerIcon: () => <Icon name="home" size={20} color={"#3b3b3b"} />}}/>
         <Drawer.Screen name="Dades" component={Dades} options={{drawerIcon: () => <Icon name="globe-outline" size={20} color={"#3b3b3b"} />}}/>
+        <Drawer.Screen name="Gràfic" component={Grafic} options={{drawerIcon: () => <Icon name="globe-outline" size={20} color={"#3b3b3b"} />}}/>
         <Drawer.Screen name="Contacte" component={Contacte} options={{drawerIcon: () => <Icon name="person" size={20} color={"#3b3b3b"} />}}/>
       </Drawer.Navigator>
     </NavigationContainer>

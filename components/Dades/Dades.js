@@ -5,7 +5,7 @@ import styles from './Styles';
 const Dades = () => {
     return (
         <ImageBackground
-            source={{ uri: 'https://images.pexels.com/photos/1156684/pexels-photo-1156684.jpeg?cs=srgb&dl=pexels-arun-thomas-1156684.jpg&fm=jpg' }}
+            source={require('../../assets/img/barcelona.jpg')}
             style={styles.backgroundImage}>
             <View style={{ flex: 1 }}>
                 <View style={styles.header}>

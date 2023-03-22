@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: -80,
         fontFamily:'Poppins',
-        backgroundColor: 'rgba(0,0,0,0.6)'
+        backgroundColor: 'rgba(0,0,0,0.5)'
     },
     background: {
         backgroundColor: 'rgba(0,0,0,0.6)'

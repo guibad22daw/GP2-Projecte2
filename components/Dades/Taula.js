@@ -12,8 +12,8 @@ const Taula = () => {
   const [continents, setContinents] = useState([]);
 
   const [columns, setColumns] = useState([
-    "Regió/Continent",
-    "Perc. de pobresa",
+    "Regió / Continent",
+    "Pobresa",
     "Accés a electricitat",
     "Esperança de vida",
     "Renta per capita"
@@ -69,7 +69,7 @@ const Taula = () => {
         stickyHeaderIndices={[0]}
         renderItem={({ item, index }) => {
           return (
-            <View style={{ ...styles.tableRow, backgroundColor: index % 2 == 1 ? "#F0FBFC" : "white" }}>
+            <View style={{ ...styles.tableRow, backgroundColor: index % 2 == 1 ? "#e8f5f9" : "white" }}>
               <Text style={{ ...styles.columnRowTxt, fontWeight: "bold" }}>{item.continent}</Text>
               <Text style={styles.columnRowTxt}>{item.percPoverty}%</Text>
               <Text style={styles.columnRowTxt}>{item.access2Electricity}%</Text>

@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { BarChart } from 'react-native-chart-kit';
+import { Chart } from '../Chart/Chart';
 
-const povertyData = {
-  labels: ['Europa', 'Àfrica', 'Oceania', 'Amèrica', 'Àsia'],
+const dataContinents = {
+  labels: ["Europa", "Àfrica", "Oceania", "Amèrica", "Àsia"],
   datasets: [
     {
       data: [83, 5, 45, 55, 70],
@@ -11,25 +11,20 @@ const povertyData = {
   ],
 };
 
+const dataEspanya = {
+  labels: ["Granada", "Barcelona", "Madrid", "Sevilla", "Bilbao"],
+  datasets: [
+    {
+      data: [20, 60, 63, 40, 10],
+    },
+  ],
+};
+
 const Grafic = () => {
   return (
     <View>
-      <BarChart
-        data={povertyData}
-        width={350}
-        height={220}
-        chartConfig={{
-          backgroundColor: '#e26a00',
-          backgroundGradientFrom: '#fb8c00',
-          backgroundGradientTo: '#ffa726',
-          decimalPlaces: 0,
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
-        }}
-      />
+      <Chart style={styles.chartContainer} data={dataContinents}/>
+      <Chart data={dataEspanya}/>
     </View>
   );
 };
@@ -40,6 +35,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  chartContainer: {
+    padding: 10
+  }
 });
 
 export default Grafic;

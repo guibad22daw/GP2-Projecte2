@@ -33,7 +33,7 @@ export function Contacte({ navigation }) {
 
   return (
     <ImageBackground
-      source={{ uri: 'https://images.pexels.com/photos/1156684/pexels-photo-1156684.jpeg?cs=srgb&dl=pexels-arun-thomas-1156684.jpg&fm=jpg' }}
+      source={require('../../assets/img/contacte-img.jpg')}
       style={styles.backgroundImage}>
       <View style={styles.container}>
         <Text style={styles.titol}>Formulari de contacte</Text>

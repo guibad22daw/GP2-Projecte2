@@ -23,9 +23,6 @@ db.transaction(
     tx.executeSql("INSERT INTO continents VALUES('Àmerica del Nord',374241210,27.5,79,100,78,67514)");
     tx.executeSql("INSERT INTO continents VALUES('Àmerica del Sud',439176795,30,76,98.5,78,8340.4)");
     tx.executeSql("INSERT INTO continents VALUES('Oceania',44491724,26.9,98.44,99,83.2,48520)");
-    tx.executeSql("select * from continents", [], (_, { rows }) =>
-      console.log(JSON.stringify(rows))
-    );
   }
 );
 

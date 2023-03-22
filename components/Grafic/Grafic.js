@@ -1,6 +1,6 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Chart } from '../Chart/Chart';
+import React from "react";
+import { StyleSheet, Text, ScrollView, View} from "react-native";
+import { Chart } from "../Chart/Chart";
 
 const dataContinents = {
   labels: ["Europa", "Àfrica", "Oceania", "Amèrica", "Àsia"],
@@ -22,22 +22,26 @@ const dataEspanya = {
 
 const Grafic = () => {
   return (
-    <View>
-      <Chart style={styles.chartContainer} data={dataContinents}/>
+    <ScrollView >
+      <View style={styles.container}>
+      <Text>cONTINENTE</Text>
+      <Chart style={styles.chartContainer} data={dataContinents} />
+      <Text>España</Text>
+      <Chart data={dataEspanya} />
       <Chart data={dataEspanya}/>
-    </View>
+      <Chart data={dataEspanya}/>
+      <Chart data={dataEspanya}/>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  chartContainer: {
-    padding: 10
-  }
 });
 
 export default Grafic;

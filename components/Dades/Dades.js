@@ -4,6 +4,7 @@ import styles from './Styles';
 
 const Dades = () => {
     return (
+        
         <ImageBackground
             source={require('../../assets/img/barcelona.png')}
             style={styles.backgroundImage}>

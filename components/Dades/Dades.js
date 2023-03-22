@@ -5,7 +5,7 @@ import styles from './Styles';
 const Dades = () => {
     return (
         <ImageBackground
-            source={require('../../assets/img/barcelona.jpg')}
+            source={require('../../assets/img/barcelona.png')}
             style={styles.backgroundImage}>
             <View style={{ flex: 1 }}>
                 <View style={styles.header}>

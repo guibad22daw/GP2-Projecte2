@@ -2,112 +2,39 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import _ from "lodash";
 import styles from './Styles';
+import _ from "lodash";
+import * as SQLite from 'expo-sqlite';
 
 const Dades = () => {
+  let dadesSQL;
+  db = SQLite.openDatabase("db.db");
+  db.transaction(tx => {
+    tx.executeSql("select * from continents", [], async (_, { rows }) => {
+      dadesSQL = await rows._array;
+    })
+  });
   const [columns, setColumns] = useState([
-    "Name",
-    "Gender",
-    "Breed",
-    "Weight",
-    "Age"
+    "Regió/Continent",
+    "Població",
+    "Percentatge de pobresa",
+    "Analfabetisme",
+    "Accés Electricitat",
+    "PIB",
+    "Expectancia Vida"
   ])
+
   const [direction, setDirection] = useState(null)
   const [selectedColumn, setSelectedColumn] = useState(null)
-  const [pets, setPets] = useState([
-    {
-      Name: "Charlie",
-      Gender: "Male",
-      Breed: "Dog",
-      Weight: 12,
-      Age: 3
-    },
-    {
-      Name: "Max",
-      Gender: "Male",
-      Breed: "Dog",
-      Weight: 23,
-      Age: 7
-    },
-    {
-      Name: "Lucy",
-      Gender: "Female",
-      Breed: "Cat",
-      Weight: 5,
-      Age: 4
-    },
-    {
-      Name: "Oscar",
-      Gender: "Male",
-      Breed: "Turtle",
-      Weight: 13,
-      Age: 23
-    },
-    {
-      Name: "Daisy",
-      Gender: "Female",
-      Breed: "Bird",
-      Weight: 1.7,
-      Age: 3
-    },
-    {
-      Name: "Ruby",
-      Gender: "Female",
-      Breed: "Dog",
-      Weight: 6,
-      Age: 3
-    },
-    {
-      Name: "Milo",
-      Gender: "Male",
-      Breed: "Dog",
-      Weight: 11,
-      Age: 7
-    },
-    {
-      Name: "Toby",
-      Gender: "Male",
-      Breed: "Dog",
-      Weight: 34,
-      Age: 19
-    },
-    {
-      Name: "Lola",
-      Gender: "Female",
-      Breed: "Cat",
-      Weight: 4,
-      Age: 3
-    },
-    {
-      Name: "Jack",
-      Gender: "Male",
-      Breed: "Turtle",
-      Weight: 13,
-      Age: 23
-    },
-    {
-      Name: "Bailey",
-      Gender: "Female",
-      Breed: "Bird",
-      Weight: 2,
-      Age: 4
-    },
-    {
-      Name: "Bella",
-      Gender: "Female",
-      Breed: "Dog",
-      Weight: 6,
-      Age: 10
-    }
-  ])
+
+  const [continents, setContinents] = useState(dadesSQL)
 
   const sortTable = (column) => {
     const newDirection = direction === "desc" ? "asc" : "desc"
-    const sortedData = _.orderBy(pets, [column], [newDirection])
+    const sortedData = _.orderBy(continents, [column], [newDirection])
     setSelectedColumn(column)
     setDirection(newDirection)
-    setPets(sortedData)
+    setContinents(sortedData)
   }
   const tableHeader = () => (
     <View style={styles.tableHeader}>
@@ -136,7 +63,7 @@ const Dades = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={pets}
+        data={continents}
         style={{ width: "90%" }}
         keyExtractor={(item, index) => index + ""}
         ListHeaderComponent={tableHeader}
@@ -144,11 +71,12 @@ const Dades = () => {
         renderItem={({ item, index }) => {
           return (
             <View style={{ ...styles.tableRow, backgroundColor: index % 2 == 1 ? "#F0FBFC" : "white" }}>
-              <Text style={{ ...styles.columnRowTxt, fontWeight: "bold" }}>{item.Name}</Text>
-              <Text style={styles.columnRowTxt}>{item.Gender}</Text>
-              <Text style={styles.columnRowTxt}>{item.Breed}</Text>
-              <Text style={styles.columnRowTxt}>{item.Weight}</Text>
-              <Text style={styles.columnRowTxt}>{item.Age}</Text>
+              <Text style={{ ...styles.columnRowTxt, fontWeight: "bold" }}>{item.continent}</Text>
+              <Text style={styles.columnRowTxt}>{item.lifeExpectancy}</Text>
+              <Text style={styles.columnRowTxt}>{item.percPoverty}</Text>
+              <Text style={styles.columnRowTxt}>{item.literacyRate}</Text>
+              <Text style={styles.columnRowTxt}>{item.acces2Electricity}</Text>
+              <Text style={styles.columnRowTxt}>{item.rentaPerCapita}</Text>
             </View>
           )
         }}

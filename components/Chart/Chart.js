@@ -13,7 +13,7 @@ export const Chart = (props) => {
         backgroundGradientFrom: "#7cc0d8",
         backgroundGradientTo: "#2196f3",
         decimalPlaces: 0,
-        color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+        color: (opacity = 1) => `rgba(0, 0, 100, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
         style: {
           borderRadius: 13,

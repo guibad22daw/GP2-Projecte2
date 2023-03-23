@@ -24,6 +24,12 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center'
     },
+    titolGrafic: {
+        fontFamily:'PoppinsSemibold',
+        fontSize: 14,
+        color: 'white',
+        textAlign: 'center'
+    },
     scroll : {
         backgroundColor: 'black'
     }

@@ -54,12 +54,23 @@ const Grafic = () => {
           </View>
         </View>
         <View style={styles.container}>
-          <Text style={styles.subtitol}>Percentatge de pobresa</Text>
+          <Text style={styles.titolGrafic}>Percentatge de pobresa</Text>
           <Chart style={styles.chartContainer} data={dataPobresa} />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.titolGrafic}>Percentatge d'accés a electricitat</Text>
+          <Chart style={styles.chartContainer} data={dataElectricitat} />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.titolGrafic}>Esperança de vida</Text>
+          <Chart style={styles.chartContainer} data={dataEsperancaVida} />
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.titolGrafic}>Renta per capita</Text>
+          <Chart style={styles.chartContainer} data={dataRentaCapita} />
         </View>
       </ScrollView>
     </View>
-    
   );
 };
 

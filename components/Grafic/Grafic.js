@@ -52,7 +52,7 @@ const dataRentaCapita = {
 const Grafic = () => {
   return (
     <View>
-      <ImageBackground source={require("../../assets/img/barcelona.png")}>
+      <ImageBackground source={require("../../assets/img/grafics.jpg")}>
         <ScrollView style={styles.scroll}>
           <View style={{ flex: 1 }}>
             <View style={styles.header}>

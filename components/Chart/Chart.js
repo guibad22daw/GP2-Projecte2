@@ -1,5 +1,5 @@
 import { BarChart } from "react-native-chart-kit";
-import { StyleSheet, View} from "react-native";
+import { StyleSheet, View, Dimensions} from "react-native";
 
 export const Chart = (props) => {
   const styles = StyleSheet.create({
@@ -12,19 +12,18 @@ export const Chart = (props) => {
     <View style={styles.container}>
       <BarChart
         data={props.data}
-        width={350}
-        height={220}
+        width={Dimensions.get('window').width-40}
+        height={250}
         chartConfig={{
           backgroundColor: "",
           backgroundGradientFrom: "#7cc0d8",
           backgroundGradientTo: "#2196f3",
           decimalPlaces: 0,
-          color: (opacity = 1) => `rgba(0, 0, 100, ${opacity})`,
+          fillShadowGradient: 'white',
+          fillShadowGradientFromOpacity: 0.8,
+          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          style: {
-            margin: 2,
-          },
-        }}
+        }}style={{paddingRight: 50, marginLeft: 50, paddingTop: 20, borderRadius: 15}}
       />
     </View>
   );

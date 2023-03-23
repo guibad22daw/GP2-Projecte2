@@ -7,10 +7,6 @@ import _ from "lodash";
 import * as SQLite from 'expo-sqlite';
 
 const Taula = () => {
-  const [direction, setDirection] = useState(null)
-  const [selectedColumn, setSelectedColumn] = useState(null)
-  const [continents, setContinents] = useState([]);
-
   const [columns, setColumns] = useState([
     "Regió / Continent",
     "Pobresa",
@@ -19,22 +15,52 @@ const Taula = () => {
     "Renta per capita"
   ])
 
-  db = SQLite.openDatabase("db.db");
-  db.transaction(tx => {
-    tx.executeSql("select * from continents", [], async (_, { rows }) => {
-      setContinents(await rows._array);
-    })
-  });
+  const [direction, setDirection] = useState(null)
+  const [selectedColumn, setSelectedColumn] = useState(null)
+  const [continents, setContinents] = useState([]);
+
+  useEffect(() => {
+    db = SQLite.openDatabase("db.db");
+    db.transaction(tx => {
+      tx.executeSql("select * from continents", [], async (_, { rows }) => {
+        setContinents(await rows._array);
+      })
+    });
+  }, [])
 
   const sortTable = (column) => {
+    let columna;
+    switch (column) {
+      case "Regió / Continent":
+        columna = "continent";
+        break;
+
+      case "Pobresa":
+        columna = "percPoverty";
+        break;
+
+      case "Accés a electricitat":
+        columna = "access2Electricity";
+        break;
+
+      case "Esperança de vida":
+        columna = "lifeExpectancy";
+        break;
+
+      case "Renta per capita":
+        columna = "rentaPerCapita";
+        break;
+      
+      default:
+        break;
+    }
     const newDirection = direction === "desc" ? "asc" : "desc"
-    const sortedData = _.orderBy(continents, [column], [newDirection])
+    const sortedData = _.orderBy(continents, [columna], [newDirection])
     setSelectedColumn(column)
     setDirection(newDirection)
     setContinents(sortedData)
   }
 
-  // TODO: Hacer que se pueda sortear la tabla, tal y como venia por defecto.
   const tableHeader = () => (
     <View style={styles.tableHeader}>
       {

@@ -1,47 +1,66 @@
 import React from "react";
 import { StyleSheet, Text, ScrollView, View} from "react-native";
 import { Chart } from "../Chart/Chart";
+import styles from './Styles';
 
-const dataContinents = {
-  labels: ["Europa", "Àfrica", "Oceania", "Amèrica", "Àsia"],
+// Dades de pobresa pel gràfic
+const dataPobresa = {
+  labels: ["Europa", "Àfrica", "Àsia", "Amèrica", "Oceania"],
   datasets: [
     {
-      data: [83, 5, 45, 55, 70],
+      data: [21.7, 34, 27.5, 28.8 , 26.9],
     },
   ],
 };
 
-const dataEspanya = {
-  labels: ["Granada", "Barcelona", "Madrid", "Sevilla", "Bilbao"],
+// Dades d'accés a electricitat pel gràfic
+const dataElectricitat = {
+  labels: ["Europa", "Àfrica", "Àsia", "Amèrica", "Oceania"],
   datasets: [
     {
-      data: [20, 60, 63, 40, 10],
+      data: [100, 43, 97, 99 , 99],
+    },
+  ],
+};
+
+// Dades d'esperança de vida pel gràfic
+const dataEsperancaVida = {
+  labels: ["Europa", "Àfrica", "Àsia", "Amèrica", "Oceania"],
+  datasets: [
+    {
+      data: [80, 64.4, 79, 78 , 83.2],
+    },
+  ],
+};
+
+// Dades de renta per capita pel gràfic
+const dataRentaCapita = {
+  labels: ["Europa", "Àfrica", "Àsia", "Amèrica", "Oceania"],
+  datasets: [
+    {
+      data: [38234, 4121, 13037, 37927, 48520],
     },
   ],
 };
 
 const Grafic = () => {
   return (
-    <ScrollView >
-      <View style={styles.container}>
-      <Text>cONTINENTE</Text>
-      <Chart style={styles.chartContainer} data={dataContinents} />
-      <Text>España</Text>
-      <Chart data={dataEspanya} />
-      <Chart data={dataEspanya}/>
-      <Chart data={dataEspanya}/>
-      <Chart data={dataEspanya}/>
-      </View>
-    </ScrollView>
+    <View>
+      <ScrollView style={styles.scroll}>
+        <View style={{ flex: 1 }}>
+          <View style={styles.header}>
+            <Text style={styles.titol}>Gràfics comparatius</Text>
+            <Text style={styles.subtitol}>Mostrem diversos gràfics comparatius amb les dades dels diferents continents.</Text>
+          </View>
+        </View>
+        <View style={styles.container}>
+          <Text style={styles.subtitol}>Percentatge de pobresa</Text>
+          <Chart style={styles.chartContainer} data={dataPobresa} />
+        </View>
+      </ScrollView>
+    </View>
+    
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 export default Grafic;

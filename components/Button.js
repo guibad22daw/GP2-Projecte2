@@ -2,9 +2,9 @@ import React from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, ViewPropTypes, TextPropTypes } from 'react-native'
 import PropTypes from 'prop-types'
 
-const Button = ({ text, buttonCustomStyles, textCustomStyles, onClick }) => {
+const Button = ({ text, buttonCustomStyles, textCustomStyles, onPress }) => {
     return (
-        <TouchableOpacity style={[styles.button, buttonCustomStyles]} onPress={onClick}>
+        <TouchableOpacity style={[styles.button, buttonCustomStyles]} onPress={onPress}>
             <Text style={[styles.text, textCustomStyles]} numberOfLines={1}>
                 {text}
             </Text>

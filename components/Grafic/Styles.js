@@ -4,7 +4,8 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
+      marginBottom: 30
     },
     header: {
         height: 200,
@@ -30,9 +31,7 @@ const styles = StyleSheet.create({
         color: 'white',
         textAlign: 'center'
     },
-    scroll : {
-        backgroundColor: 'black'
-    }
+    
 });
 
 export default styles;

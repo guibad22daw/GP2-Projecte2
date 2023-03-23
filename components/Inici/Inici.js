@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, View, ImageBackground, Button } from 'react-native';
+import { Text, View, ImageBackground } from 'react-native';
 import { useFonts } from 'expo-font';
 import styles from './Styles';
+import Button from './Button';
 
 export function Inici({ navigation }) {
   const [loaded] = useFonts({
@@ -23,8 +24,7 @@ export function Inici({ navigation }) {
         <Text style={styles.description}>
         A l'actualitat, moltes persones no coneixen la realitat actual de molts països. T'ajudem a descobrir-la.
         </Text>
-        <Button
-          title="Veure dades"
+        <Button text="Veure dades" buttonCustomStyles={{ backgroundColor: "#2196f3", borderRadius: 50, marginTop: 10 }} textCustomStyles={{ color: "white" }}
           onPress={() => navigation.navigate('Dades')}
         />
       </View>

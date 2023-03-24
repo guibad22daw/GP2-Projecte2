@@ -16,14 +16,14 @@ export const Chart = (props) => {
         height={250}
         chartConfig={{
           backgroundColor: "",
-          backgroundGradientFrom: "#7cc0d8",
+          backgroundGradientFrom: "#5cc0d8",
           backgroundGradientTo: "#2196f3",
           decimalPlaces: 0,
           fillShadowGradient: 'white',
           fillShadowGradientFromOpacity: 0.8,
           color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-        }}style={{paddingRight: 50, marginLeft: 50, paddingTop: 20, borderRadius: 15}}
+        }}style={props.style}
       />
     </View>
   );

@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, ScrollView, View, ImageBackground } from "react-native";
+import { StyleSheet, Text, ScrollView, View, ImageBackground, ActivityIndicator } from "react-native";
 import * as SQLite from 'expo-sqlite';
 import { Chart } from "../Chart/Chart";
-import styles from "./Styles";
-
-// Dades de pobresa pel gràfic
 
 // Dades d'accés a electricitat pel gràfic
 const dataElectricitat = {
@@ -37,7 +34,8 @@ const dataRentaCapita = {
 };
 
 const Grafic = () => {
-  const [Loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  // Dades de pobresa pel gràfic
   let initialdataPobresa = {
     labels: ["Europa", "Àfrica", "Àsia", "Amèrica", "Oceania"],
     datasets: [
@@ -66,45 +64,93 @@ const Grafic = () => {
     });
   }, [])
 
-    return (
-      <View>
-        <ImageBackground source={require("../../assets/img/grafics.jpg")}>
-          <ScrollView style={styles.scroll}>
-            <View style={{ flex: 1 }}>
-              <View style={styles.header}>
-                <Text style={styles.titol}>Gràfics comparatius</Text>
-                <Text style={styles.subtitol}>
-                  Mostrem diversos gràfics comparatius amb les dades dels
-                  diferents continents.
-                </Text>
-              </View>
-            </View>
-            <View style={styles.container}>
-              <Text style={styles.titolGrafic}>Percentatge de pobresa</Text>
-              {
-                  Loading == false ?
-                  <Chart style={styles.chartContainer} data={dataPobresa} />
-                  : <Chart style={styles.chartContainer} data={initialdataPobresa} />
-              }
-            </View>
-            <View style={styles.container}>
-              <Text style={styles.titolGrafic}>
-                Percentatge d'accés a electricitat
+  return (
+    <View>
+      <ImageBackground source={require("../../assets/img/grafics.jpg")}>
+        <ScrollView style={styles.scroll}>
+          <View style={{ flex: 1 }}>
+            <View style={styles.header}>
+              <Text style={styles.titol}>Gràfics comparatius</Text>
+              <Text style={styles.subtitol}>
+                Mostrem diversos gràfics comparatius amb les dades dels
+                diferents continents.
               </Text>
-              <Chart style={styles.chartContainer} data={dataElectricitat} />
             </View>
-            <View style={styles.container}>
-              <Text style={styles.titolGrafic}>Esperança de vida</Text>
-              <Chart style={styles.chartContainer} data={dataEsperancaVida} />
-            </View>
-            <View style={styles.container}>
-              <Text style={styles.titolGrafic}>Renta per capita</Text>
-              <Chart style={styles.chartContainer} data={dataRentaCapita} />
-            </View>
-          </ScrollView>
-        </ImageBackground>
-      </View>
-    );
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.titolGrafic}>Percentatge de pobresa</Text>
+            {
+              loading == false ?
+                <Chart style={styles.grafic1} data={dataPobresa} />
+                : <ActivityIndicator size="large" color="#2296f3" style={{ marginTop: 20 }} />
+            }
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.titolGrafic}>
+              Percentatge d'accés a electricitat
+            </Text>
+            <Chart style={styles.grafic1} data={dataElectricitat} />
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.titolGrafic}>Esperança de vida</Text>
+            <Chart style={styles.grafic1} data={dataEsperancaVida} />
+          </View>
+          <View style={styles.container}>
+            <Text style={styles.titolGrafic}>Renta per capita</Text>
+            <Chart style={styles.grafic2} data={dataRentaCapita} />
+          </View>
+        </ScrollView>
+      </ImageBackground>
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: 30
+  },
+  header: {
+    height: 160,
+    justifyContent: 'center',
+    alignItems: "center",
+    fontFamily: 'PoppinsSemibold',
+    color: 'black'
+  },
+  titol: {
+    fontFamily: 'PoppinsSemibold',
+    fontSize: 30,
+    color: 'white'
+  },
+  subtitol: {
+    fontFamily: 'PoppinsSemibold',
+    fontSize: 12,
+    color: 'white',
+    textAlign: 'center'
+  },
+  titolGrafic: {
+    fontFamily: 'PoppinsSemibold',
+    fontSize: 14,
+    color: 'white',
+    textAlign: 'center'
+  },
+  scroll: {
+    textDecorationLine: 'none'
+  },
+  grafic1: {
+    paddingRight: 40,
+    marginLeft: 40,
+    paddingTop: 30,
+    borderRadius: 10
+  },
+  grafic2: {
+    paddingRight: 55,
+    marginLeft: 55,
+    paddingTop: 30,
+    borderRadius: 10
+  }
+});
 
 export default Grafic;

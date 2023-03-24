@@ -2,7 +2,6 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import styles from './Styles';
 import _ from "lodash";
 import * as SQLite from 'expo-sqlite';
 
@@ -109,5 +108,54 @@ const Taula = () => {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+  },
+  tableHeader: {
+      flexDirection: "row",
+      justifyContent: "space-evenly",
+      alignItems: "center",
+      backgroundColor: "#2196f3",
+      borderTopEndRadius: 10,
+      borderTopStartRadius: 10,
+      height: 50
+  },
+  tableRow: {
+      flexDirection: "row",
+      height: 50,
+      alignItems: "center",
+  },
+  columnHeader: {
+      width: "18.5%",
+      justifyContent: "center",
+      alignItems: "center"
+  },
+  columnHeaderTxt: {
+      color: "white",
+      fontWeight: "bold",
+      fontSize: 11
+  },
+  columnRowTxt: {
+      width: "20%",
+      textAlign: "center",
+  },
+  header: {
+      height: 200,
+      justifyContent: 'center',
+      alignItems: "center",
+      fontFamily:'PoppinsSemibold',
+      color: 'black'
+  },
+  backgroundImage: {
+      flex: 1,
+      resizeMode: "cover",
+      justifyContent: "center",
+      tintColor: 'rgba(0, 0, 0, 0.5)'
+  }
+});
 
 export default Taula;

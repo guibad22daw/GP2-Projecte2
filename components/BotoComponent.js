@@ -1,9 +1,9 @@
 import React from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, ViewPropTypes, TextPropTypes } from 'react-native'
 
-const Button = ({ text, buttonCustomStyles, textCustomStyles, onPress }) => {
+const Button = ({ text, buttonCustomStyles, textCustomStyles, onPress, height,width }) => {
     return (
-        <TouchableOpacity style={[styles.button, buttonCustomStyles]} onPress={onPress}>
+        <TouchableOpacity style={[{ width: width, height: height, borderRadius: 5, position: "relative", justifyContent: "center", alignItems: "center" }, buttonCustomStyles]} onPress={onPress}>
             <Text style={[styles.text, textCustomStyles]} numberOfLines={1}>
                 {text}
             </Text>
@@ -13,14 +13,6 @@ const Button = ({ text, buttonCustomStyles, textCustomStyles, onPress }) => {
 }
 
 const styles = StyleSheet.create({
-    button: {
-        width: "50%",
-        height: 40,
-        borderRadius: 5,
-        position: "relative",
-        justifyContent: "center",
-        alignItems: "center"
-    },
     buttonShadow: {
         width: "100%",
         height: 40,

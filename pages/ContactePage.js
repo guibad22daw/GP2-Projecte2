@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import { View, Text, TextInput, ImageBackground, StyleSheet } from 'react-native';
-import Button from '../Button';
-import styles from './Styles';
+import Button from '../components/BotoComponent';
+import styles from '../styles/ContacteStyles';
 import { useFonts } from 'expo-font';
 
 export function Contacte({ navigation }) {
@@ -22,9 +22,9 @@ export function Contacte({ navigation }) {
   };
 
   const [loaded] = useFonts({
-    Poppins: require('../../assets/fonts/Poppins-Regular.ttf'),
-    PoppinsMedium: require('../../assets/fonts/Poppins-Medium.ttf'),
-    PoppinsSemibold: require('../../assets/fonts/Poppins-SemiBold.ttf'),
+    Poppins: require('../assets/fonts/Poppins-Regular.ttf'),
+    PoppinsMedium: require('../assets/fonts/Poppins-Medium.ttf'),
+    PoppinsSemibold: require('../assets/fonts/Poppins-SemiBold.ttf'),
   });
 
   if (!loaded) {
@@ -33,7 +33,7 @@ export function Contacte({ navigation }) {
 
   return (
     <ImageBackground
-      source={require('../../assets/img/contacte-img.jpg')}
+      source={require('../assets/img/contacte-img.jpg')}
       style={styles.backgroundImage}>
       <View style={styles.container}>
         <Text style={styles.titol}>Formulari de contacte</Text>
@@ -68,7 +68,7 @@ export function Contacte({ navigation }) {
           multiline
         />
         <Button text="Enviar" buttonCustomStyles={{ backgroundColor: "#2196f3", borderRadius: 50, marginTop: 10 }} textCustomStyles={{ color: "white" }}
-          onPress={handleSubmit}
+          onPress={handleSubmit} width={"100%"} height={40}
         />
       </View>
     </ImageBackground>

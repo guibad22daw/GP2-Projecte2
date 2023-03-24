@@ -1,11 +1,11 @@
 import { View, Text, ImageBackground } from 'react-native'
-import Taula from './Taula';
-import styles from './Styles';
+import Taula from '../components/TaulaComponent';
+import styles from '../styles/DadesStyles';
 
 const Dades = () => {
     return (
         <ImageBackground
-            source={require('../../assets/img/barcelona.png')}
+            source={require('../assets/img/barcelona.png')}
             style={styles.backgroundImage}>
             <View style={{ flex: 1 }}>
                 <View style={styles.header}>

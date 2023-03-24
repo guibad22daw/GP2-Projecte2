@@ -54,13 +54,11 @@ const Grafic = () => {
     db.transaction(tx => {
       tx.executeSql("select percPoverty from continents", [], async (_, { rows }) => {
         let data = await rows._array;
-        let newData = [];
+        let newDataPobresa = initialdataPobresa;
         data.map(async (element) => {
-          newData.push(parseFloat(element.percPoverty));
+          newDataPobresa.datasets[0].data.push(parseFloat(element.percPoverty));
         });
-        initialdataPobresa.datasets[0].data = newData;
-        setDataPobresa(initialdataPobresa);
-        console.log('dataPobresa', dataPobresa)
+        setDataPobresa(newDataPobresa);
         setLoading(false);
       })
     });
@@ -79,28 +77,10 @@ const Grafic = () => {
               </Text>
             </View>
           </View>
-          <View style={styles.container}>
-            <Text style={styles.titolGrafic}>Percentatge de pobresa</Text>
-            {
-              loading == false ?
-                <Chart style={styles.grafic1} data={dataPobresa} />
-                : <ActivityIndicator size="large" color="#2296f3" style={{ marginTop: 20 }} />
-            }
-          </View>
-          <View style={styles.container}>
-            <Text style={styles.titolGrafic}>
-              Percentatge d'accés a electricitat
-            </Text>
-            <Chart style={styles.grafic1} data={dataElectricitat} />
-          </View>
-          <View style={styles.container}>
-            <Text style={styles.titolGrafic}>Esperança de vida</Text>
-            <Chart style={styles.grafic1} data={dataEsperancaVida} />
-          </View>
-          <View style={styles.container}>
-            <Text style={styles.titolGrafic}>Renta per capita</Text>
-            <Chart style={styles.grafic2} data={dataRentaCapita} />
-          </View>
+          <Chart data={dataPobresa} loading={loading} estilGrafic={styles.grafic1} titolGrafic="Percentatge de pobresa"/>
+          <Chart data={dataElectricitat} loading={loading} estilGrafic={styles.grafic1} titolGrafic="Percentatge d'accés a electricitat"/>
+          <Chart data={dataEsperancaVida} loading={loading} estilGrafic={styles.grafic1} titolGrafic="Esperança de vida"/>
+          <Chart data={dataRentaCapita} loading={loading} estilGrafic={styles.grafic2} titolGrafic="Renta per capita"/>
         </ScrollView>
       </ImageBackground>
     </View>

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { Inici } from './components/Inici/Inici';
-import { Contacte } from './components/Contacte/Contacte';
-import Dades from './components/Dades/Dades';
+import { Inici } from './pages/IniciPage';
+import { Contacte } from './pages/ContactePage';
+import Dades from './pages/DadesPage';
 import Icon from 'react-native-vector-icons/Ionicons';
-import Grafic from './components/Grafic/Grafic';
+import Grafic from './pages/GraficPage';
 import * as SQLite from 'expo-sqlite';
 
 const Drawer = createDrawerNavigator();
